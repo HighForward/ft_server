@@ -1,7 +1,16 @@
-FROM debian:buster
+FROM	debian:buster
 
-COPY srcs/setup.sh /home/
+COPY    srcs/wordpress.tar.gz /home/
+COPY	srcs/index.html /home/
+COPY    srcs/wordpress.sql /home/
+COPY	srcs/database /home/
+ADD		srcs/wordpress.conf /etc/nginx/sites-available/wordpress.conf
+ADD		srcs/installation.sh init.sh
 
-RUN bash /home/setup.sh
+RUN		bash init.sh
 
-EXPOSE 80
+CMD		service mysql restart && \
+		service php7.3-fpm start && \
+		nginx -g 'daemon off;'
+
+EXPOSE	80

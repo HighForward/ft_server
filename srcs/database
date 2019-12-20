@@ -1,0 +1,4 @@
+create database wordpress;
+create user 'wp_user'@'localhost' identified by 'admin';
+grant all on wordpress.* to 'wp_user'@'localhost';
+flush privileges;
