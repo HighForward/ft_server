@@ -1,7 +1,6 @@
 FROM	debian:buster
 
 COPY    srcs/wordpress.tar.gz /home/
-COPY	srcs/index.html /home/
 COPY    srcs/wordpress.sql /home/
 COPY	srcs/database /home/
 ADD		srcs/wordpress.conf /etc/nginx/sites-available/wordpress.conf

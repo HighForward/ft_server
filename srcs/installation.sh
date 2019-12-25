@@ -30,7 +30,13 @@ tar -xf wordpress.tar.gz
 rm wordpress.tar.gz
 cd
 cd ..
-mkdir /var/www/html/wordpress/index
-mv /home/index.html /var/www/html/wordpress/index/.
+wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-english.tar.gz
+mkdir /var/www/html/phpmyadmin
+tar xzf phpMyAdmin-4.9.0.1-english.tar.gz --strip-components=1 -C /var/www/html/phpmyadmin
+cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
+cd /var/www/html
+rm index.nginx-debian.html
+cd
+cd ..
 chown -R www-data:www-data /var/www/*
 chmod -R 755 /var/www/*
